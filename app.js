@@ -46,15 +46,20 @@ function getTimetableURLs() {
   return isWeekend ? timetables.weekend : timetables.weekday;
 }
 
-// Start and update the clock every second
+// Start and update the clock every minute
 function startClock() {
   const clockElement = document.getElementById("clock");
-  setInterval(() => {
+  function updateClock() {
     const now = new Date();
-    const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    clockElement.textContent = `Current Local Time: ${timeString}`;
-  }, 1000);
+    const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+    clockElement.textContent = `Current Time: ${timeString}`;
+  }
+  updateClock(); // Initial call
+  setInterval(updateClock, 60000); // Update every minute
 }
+
+window.onload = startClock;
+
 
 // Find the nearest pier
 function findNearestPier() {
