@@ -14,6 +14,22 @@
     <button class="find-btn" onclick="findNearestPier()">Find My Nearest Pier</button>
     <p class="notice">This app requires access to your location. Please enable location services for accurate results.</p>
     <div id="results" class="results-container"></div>
+    
+    <!-- Toggle button for privacy information -->
+    <button class="privacy-toggle-btn" onclick="togglePrivacySection()">Privacy and Security Information</button>
+    
+    <!-- Hidden Privacy and Security Information section -->
+    <div id="privacy-section" class="privacy" style="display: none;">
+      <h3>Privacy and Security Information</h3>
+      <p>This web app uses your location data only to find the nearest Thames Clipper pier and display relevant timetable links.</p>
+      <p><strong>Key points:</strong></p>
+      <ul>
+        <li>Your location is requested once and only when you click the “Find My Nearest Pier” button.</li>
+        <li>Your location data is <strong>not stored</strong>, <strong>shared</strong>, or sent to any external server.</li>
+        <li>The location information is processed locally in your browser and is used solely to find the nearest pier.</li>
+      </ul>
+      <p>If you deny the location request, the app will not function, as it relies on your current location to provide accurate results.</p>
+    </div>
   </div>
 </body>
 </html>

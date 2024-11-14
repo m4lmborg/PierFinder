@@ -186,3 +186,51 @@ h1 {
     font-size: 0.85rem;
   }
 }
+
+/* Privacy and Security Toggle Button */
+.privacy-toggle-btn {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s ease;
+}
+
+.privacy-toggle-btn:hover {
+  background: #555;
+}
+
+/* Privacy and Security Information Section */
+.privacy {
+  text-align: left;
+  background: #f0f0f0;
+  border-radius: 5px;
+  padding: 15px;
+  margin-top: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.privacy h3 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.privacy p,
+.privacy ul {
+  margin-bottom: 10px;
+}
+
+.privacy ul {
+  padding-left: 20px;
+}
+
+.privacy ul li {
+  margin-bottom: 5px;
+}

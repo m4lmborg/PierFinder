@@ -121,6 +121,16 @@ function displayNearestPier(pier, distance) {
   `;
 }
 
+// Toggle visibility of the privacy and security information section
+function togglePrivacySection() {
+  const privacySection = document.getElementById("privacy-section");
+  if (privacySection.style.display === "none") {
+    privacySection.style.display = "block";
+  } else {
+    privacySection.style.display = "none";
+  }
+}
+
 // Display the timetable links based on the day
 function displayTimetables() {
   const timetableURLs = getTimetableURLs();
