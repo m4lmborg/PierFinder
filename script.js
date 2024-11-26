@@ -506,6 +506,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add click handler for find nearest pier button
     document.getElementById('find-nearest').addEventListener('click', findNearestPierToUser);
     
+    // Info button functionality
+    document.getElementById('location-info-btn').addEventListener('click', function() {
+        const locationInfo = document.getElementById('location-info');
+        locationInfo.classList.toggle('hidden');
+    });
+
     // Initial updates
     updateTimeDisplay();
     updateTimes();

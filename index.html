@@ -16,28 +16,12 @@
                     A streamlined interface for checking Thames Clipper river bus arrival times across London. 
                     View real-time schedules, locate your nearest pier, and plan your journey efficiently.
                 </p>
-                <p class="app-disclaimer">
-                    This is an independent service and is not affiliated with Thames Clippers or Transport for London.
-                </p>
             </header>
         </div>
     </div>
 
     <div class="container">
         <main class="content">
-            <section class="times-section glass-morphism">
-                <div class="results" id="results">
-                    <div class="direction westbound">
-                        <h2><i class="fas fa-arrow-left"></i> Westbound</h2>
-                        <div id="westbound-times" class="times-list"></div>
-                    </div>
-                    <div class="direction eastbound">
-                        <h2><i class="fas fa-arrow-right"></i> Eastbound</h2>
-                        <div id="eastbound-times" class="times-list"></div>
-                    </div>
-                </div>
-            </section>
-
             <section class="pier-selection-section glass-morphism">
                 <div class="pier-selector">
                     <label for="pier-select">
@@ -69,27 +53,50 @@
                             <option value="putney">Putney</option>
                         </select>
                     </div>
-                    <button id="find-nearest" class="nearest-pier-btn" aria-label="Find nearest pier">
-                        <i class="fas fa-location-dot"></i>
-                        Find Nearest Pier
-                    </button>
-                </div>
-                
-                <div class="location-disclaimer">
-                    <i class="fas fa-info-circle"></i>
-                    <p>Clicking "Find Nearest Pier" will request access to your device's location to find the closest Thames Clipper pier to you.</p>
-                </div>
+                    <div class="location-controls">
+                        <button id="find-nearest" class="nearest-pier-btn" aria-label="Find nearest pier">
+                            <i class="fas fa-location-dot"></i>
+                            Find Nearest Pier
+                        </button>
+                        <button id="location-info-btn" class="info-btn" aria-label="Location information">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                    </div>
+                    
+                    <div id="location-info" class="location-info hidden">
+                        <p>Clicking "Find Nearest Pier" will request access to your device's location to find the closest Thames Clipper pier to you.</p>
+                    </div>
 
-                <div id="nearest-pier-info" class="nearest-pier-info hidden" aria-live="polite">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <p>Nearest pier: <span id="nearest-pier-name"></span></p>
-                        <p>Distance: <span id="nearest-pier-distance"></span></p>
+                    <div id="nearest-pier-info" class="nearest-pier-info hidden" aria-live="polite">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <p>Nearest pier: <span id="nearest-pier-name"></span></p>
+                            <p>Distance: <span id="nearest-pier-distance"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="times-section glass-morphism">
+                <div class="results" id="results">
+                    <div class="direction westbound">
+                        <h2><i class="fas fa-arrow-left"></i> Westbound</h2>
+                        <div id="westbound-times" class="times-list"></div>
+                    </div>
+                    <div class="direction eastbound">
+                        <h2><i class="fas fa-arrow-right"></i> Eastbound</h2>
+                        <div id="eastbound-times" class="times-list"></div>
                     </div>
                 </div>
             </section>
         </main>
     </div>
+
+    <footer class="app-footer">
+        <p class="app-disclaimer">
+            This is an independent service and is not affiliated with Thames Clippers or Transport for London.
+        </p>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
