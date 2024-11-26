@@ -346,6 +346,19 @@ select:focus {
 .time-item .time {
     font-weight: 600;
     color: var(--primary-text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.time-item .service-line {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    background: rgba(0, 113, 227, 0.1);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    display: inline-block;
 }
 
 .time-item .destination {

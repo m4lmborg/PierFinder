@@ -139,7 +139,7 @@ async function fetchTimetable(stopPointId) {
     }
 }
 
-function createTimeItem(time, destination, eta, isDelayed = false, isArriving = false) {
+function createTimeItem(time, destination, eta, serviceLine, isDelayed = false, isArriving = false) {
     const timeItem = document.createElement('div');
     timeItem.className = `time-item${isDelayed ? ' delayed' : ''}${isArriving ? ' arriving' : ''}`;
     
@@ -152,7 +152,7 @@ function createTimeItem(time, destination, eta, isDelayed = false, isArriving = 
     
     const timeText = document.createElement('div');
     timeText.className = 'time';
-    timeText.textContent = time;
+    timeText.innerHTML = `${time} <span class="service-line">${serviceLine || 'RB'}</span>`;
     
     const destinationText = document.createElement('div');
     destinationText.className = 'destination';
@@ -368,7 +368,12 @@ async function updateTimes() {
             const eta = timeToStation <= 0 ? 'Due' : 
                         timeToStation < 60 ? `${timeToStation} min` :
                         `${Math.floor(timeToStation / 60)}h ${timeToStation % 60}m`;
-            const timeItem = createTimeItem(formatArrivalTime(arrival.expectedArrival), arrival.destinationName, eta);
+            const timeItem = createTimeItem(
+                formatArrivalTime(arrival.expectedArrival), 
+                arrival.destinationName, 
+                eta,
+                arrival.lineId?.toUpperCase() || 'RB'
+            );
             eastboundContainer.appendChild(timeItem);
         });
     }
@@ -384,7 +389,12 @@ async function updateTimes() {
             const eta = timeToStation <= 0 ? 'Due' : 
                         timeToStation < 60 ? `${timeToStation} min` :
                         `${Math.floor(timeToStation / 60)}h ${timeToStation % 60}m`;
-            const timeItem = createTimeItem(formatArrivalTime(arrival.expectedArrival), arrival.destinationName, eta);
+            const timeItem = createTimeItem(
+                formatArrivalTime(arrival.expectedArrival), 
+                arrival.destinationName, 
+                eta,
+                arrival.lineId?.toUpperCase() || 'RB'
+            );
             westboundContainer.appendChild(timeItem);
         });
     }
