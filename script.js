@@ -139,6 +139,39 @@ async function fetchTimetable(stopPointId) {
     }
 }
 
+function createTimeItem(time, destination, eta, isDelayed = false, isArriving = false) {
+    const timeItem = document.createElement('div');
+    timeItem.className = `time-item${isDelayed ? ' delayed' : ''}${isArriving ? ' arriving' : ''}`;
+    
+    const boatIcon = document.createElement('div');
+    boatIcon.className = 'boat-icon';
+    boatIcon.innerHTML = '<i class="fas fa-ship"></i>';
+    
+    const timeInfo = document.createElement('div');
+    timeInfo.className = 'time-info';
+    
+    const timeText = document.createElement('div');
+    timeText.className = 'time';
+    timeText.textContent = time;
+    
+    const destinationText = document.createElement('div');
+    destinationText.className = 'destination';
+    destinationText.textContent = destination;
+    
+    timeInfo.appendChild(timeText);
+    timeInfo.appendChild(destinationText);
+    
+    const etaText = document.createElement('div');
+    etaText.className = 'eta';
+    etaText.textContent = eta;
+    
+    timeItem.appendChild(boatIcon);
+    timeItem.appendChild(timeInfo);
+    timeItem.appendChild(etaText);
+    
+    return timeItem;
+}
+
 async function updateTimes() {
     const pier = document.getElementById('pier-select').value;
     console.log('Selected pier:', pier);
@@ -329,22 +362,15 @@ async function updateTimes() {
     if (eastbound.length === 0) {
         eastboundContainer.innerHTML = '<p>No eastbound services scheduled</p>';
     } else {
-        const eastboundHtml = eastbound.map(arrival => {
+        eastboundContainer.innerHTML = '';
+        eastbound.forEach(arrival => {
             const timeToStation = Math.floor(arrival.timeToStation / 60); // Convert seconds to minutes
-            const countdown = timeToStation <= 0 ? 'Due' : 
-                            timeToStation < 60 ? `${timeToStation} min` :
-                            `${Math.floor(timeToStation / 60)}h ${timeToStation % 60}m`;
-            
-            return `
-                <div class="time-entry">
-                    <span class="time">${formatArrivalTime(arrival.expectedArrival)}</span>
-                    <span class="countdown">${countdown}</span>
-                    <span class="destination">to ${arrival.destinationName || 'Unknown destination'}</span>
-                    <span class="service">${arrival.lineId?.toUpperCase() || ''}</span>
-                </div>
-            `;
-        }).join('');
-        eastboundContainer.innerHTML = eastboundHtml;
+            const eta = timeToStation <= 0 ? 'Due' : 
+                        timeToStation < 60 ? `${timeToStation} min` :
+                        `${Math.floor(timeToStation / 60)}h ${timeToStation % 60}m`;
+            const timeItem = createTimeItem(formatArrivalTime(arrival.expectedArrival), arrival.destinationName, eta);
+            eastboundContainer.appendChild(timeItem);
+        });
     }
 
     // Update westbound times
@@ -352,22 +378,15 @@ async function updateTimes() {
     if (westbound.length === 0) {
         westboundContainer.innerHTML = '<p>No westbound services scheduled</p>';
     } else {
-        const westboundHtml = westbound.map(arrival => {
+        westboundContainer.innerHTML = '';
+        westbound.forEach(arrival => {
             const timeToStation = Math.floor(arrival.timeToStation / 60); // Convert seconds to minutes
-            const countdown = timeToStation <= 0 ? 'Due' : 
-                            timeToStation < 60 ? `${timeToStation} min` :
-                            `${Math.floor(timeToStation / 60)}h ${timeToStation % 60}m`;
-            
-            return `
-                <div class="time-entry">
-                    <span class="time">${formatArrivalTime(arrival.expectedArrival)}</span>
-                    <span class="countdown">${countdown}</span>
-                    <span class="destination">to ${arrival.destinationName || 'Unknown destination'}</span>
-                    <span class="service">${arrival.lineId?.toUpperCase() || ''}</span>
-                </div>
-            `;
-        }).join('');
-        westboundContainer.innerHTML = westboundHtml;
+            const eta = timeToStation <= 0 ? 'Due' : 
+                        timeToStation < 60 ? `${timeToStation} min` :
+                        `${Math.floor(timeToStation / 60)}h ${timeToStation % 60}m`;
+            const timeItem = createTimeItem(formatArrivalTime(arrival.expectedArrival), arrival.destinationName, eta);
+            westboundContainer.appendChild(timeItem);
+        });
     }
 }
 
