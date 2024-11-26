@@ -1,35 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nearest Thames Clipper Pier</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="app.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Thames Clipper Times</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Nearest Thames Clipper Pier</h1>
-    <div id="clock" class="clock"></div>
-    <button class="find-btn" onclick="findNearestPier()">Find My Nearest Pier</button>
-    <p class="notice">This app requires access to your location. Please enable location services for accurate results.</p>
-    <div id="results" class="results-container"></div>
-    
-    <!-- Toggle button for privacy information -->
-    <button class="privacy-toggle-btn" onclick="togglePrivacySection()">Privacy and Security Information</button>
-    
-    <!-- Hidden Privacy and Security Information section -->
-    <div id="privacy-section" class="privacy" style="display: none;">
-      <h3>Privacy and Security Information</h3>
-      <p>This web app uses your location data only to find the nearest Thames Clipper pier and display relevant timetable links.</p>
-      <p><strong>Key points:</strong></p>
-      <ul>
-        <li>Your location is requested once and only when you click the “Find My Nearest Pier” button.</li>
-        <li>Your location data is <strong>not stored</strong>, <strong>shared</strong>, or sent to any external server.</li>
-        <li>The location information is processed locally in your browser and is used solely to find the nearest pier.</li>
-      </ul>
-      <p>If you deny the location request, the app will not function, as it relies on your current location to provide accurate results.</p>
+    <div class="hero">
+        <div class="hero-content">
+            <header class="app-header">
+                <h1>Thames Clipper Times</h1>
+                <p class="app-description">
+                    A streamlined interface for checking Thames Clipper river bus arrival times across London. 
+                    View real-time schedules, locate your nearest pier, and plan your journey efficiently.
+                </p>
+                <p class="app-disclaimer">
+                    This is an independent service and is not affiliated with Thames Clippers or Transport for London.
+                </p>
+                <div id="time-display" class="time-display">
+                    <div class="time-content">
+                        <div id="current-date" class="current-date"></div>
+                        <div id="current-time" class="current-time"></div>
+                        <div id="bank-holiday" class="bank-holiday hidden" aria-live="polite">
+                            <i class="fas fa-star"></i>
+                            <span>Bank Holiday Today</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
     </div>
-  </div>
+
+    <div class="container">
+        <main class="content">
+            <section class="pier-selection-section glass-morphism">
+                <div class="pier-selector">
+                    <label for="pier-select">
+                        <i class="fas fa-anchor"></i>
+                        Select your pier
+                    </label>
+                    <div class="select-wrapper">
+                        <select id="pier-select">
+                            <option value="">Please select a pier</option>
+                            <option value="barking_riverside">Barking Riverside</option>
+                            <option value="woolwich">Woolwich (Royal Arsenal)</option>
+                            <option value="royal_wharf">Royal Wharf</option>
+                            <option value="north_greenwich">North Greenwich (The O2)</option>
+                            <option value="greenwich">Greenwich</option>
+                            <option value="masthouse_terrace">Masthouse Terrace</option>
+                            <option value="greenland">Greenland (Surrey Quays)</option>
+                            <option value="canary_wharf">Canary Wharf</option>
+                            <option value="tower">Tower</option>
+                            <option value="london_bridge">London Bridge City</option>
+                            <option value="bankside">Bankside</option>
+                            <option value="embankment">Embankment</option>
+                            <option value="westminster">Westminster</option>
+                            <option value="london_eye">London Eye (Waterloo)</option>
+                            <option value="millbank">Millbank</option>
+                            <option value="vauxhall">Vauxhall (St George Wharf)</option>
+                            <option value="battersea">Battersea Power Station</option>
+                            <option value="chelsea_harbour">Chelsea Harbour</option>
+                            <option value="wandsworth">Wandsworth Riverside Quarter</option>
+                            <option value="putney">Putney</option>
+                        </select>
+                    </div>
+                    <button id="find-nearest" class="nearest-pier-btn" aria-label="Find nearest pier">
+                        <i class="fas fa-location-dot"></i>
+                        Find Nearest Pier
+                    </button>
+                </div>
+                
+                <div class="location-disclaimer">
+                    <i class="fas fa-info-circle"></i>
+                    <p>Clicking "Find Nearest Pier" will request access to your device's location to find the closest Thames Clipper pier to you.</p>
+                </div>
+
+                <div id="nearest-pier-info" class="nearest-pier-info hidden" aria-live="polite">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <p>Nearest pier: <span id="nearest-pier-name"></span></p>
+                        <p>Distance: <span id="nearest-pier-distance"></span></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="times-section glass-morphism">
+                <div class="results" id="results">
+                    <div class="direction westbound">
+                        <h2><i class="fas fa-arrow-left"></i> Westbound</h2>
+                        <div id="westbound-times" class="times-list"></div>
+                    </div>
+                    <div class="direction eastbound">
+                        <h2><i class="fas fa-arrow-right"></i> Eastbound</h2>
+                        <div id="eastbound-times" class="times-list"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
