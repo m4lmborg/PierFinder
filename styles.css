@@ -341,61 +341,7 @@ select:focus {
     color: var(--secondary-text);
 }
 
-/* Time Display Section */
-.time-section {
-    padding: 2rem;
-    text-align: center;
-}
-
-.time-display {
-    margin-top: 2rem;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 12px;
-    padding: 1rem 2rem;
-    display: inline-flex;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.time-content {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-}
-
-.current-time, .current-date {
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.9);
-    letter-spacing: 0.5px;
-}
-
-.current-time {
-    font-family: -apple-system-monospace, monospace;
-    padding-right: 2rem;
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.bank-holiday {
-    margin-left: 1rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 100px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: white;
-}
-
-.bank-holiday i {
-    color: white;
-}
-
+/* Hidden utility class */
 .hidden {
     display: none;
 }
@@ -418,10 +364,6 @@ select:focus {
     .results {
         grid-template-columns: 1fr;
         gap: 1.5rem;
-    }
-
-    .current-time {
-        font-size: 2.5rem;
     }
 
     .time-entry {

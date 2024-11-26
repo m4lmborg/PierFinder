@@ -19,22 +19,25 @@
                 <p class="app-disclaimer">
                     This is an independent service and is not affiliated with Thames Clippers or Transport for London.
                 </p>
-                <div id="time-display" class="time-display">
-                    <div class="time-content">
-                        <div id="current-date" class="current-date"></div>
-                        <div id="current-time" class="current-time"></div>
-                        <div id="bank-holiday" class="bank-holiday hidden" aria-live="polite">
-                            <i class="fas fa-star"></i>
-                            <span>Bank Holiday Today</span>
-                        </div>
-                    </div>
-                </div>
             </header>
         </div>
     </div>
 
     <div class="container">
         <main class="content">
+            <section class="times-section glass-morphism">
+                <div class="results" id="results">
+                    <div class="direction westbound">
+                        <h2><i class="fas fa-arrow-left"></i> Westbound</h2>
+                        <div id="westbound-times" class="times-list"></div>
+                    </div>
+                    <div class="direction eastbound">
+                        <h2><i class="fas fa-arrow-right"></i> Eastbound</h2>
+                        <div id="eastbound-times" class="times-list"></div>
+                    </div>
+                </div>
+            </section>
+
             <section class="pier-selection-section glass-morphism">
                 <div class="pier-selector">
                     <label for="pier-select">
@@ -82,19 +85,6 @@
                     <div>
                         <p>Nearest pier: <span id="nearest-pier-name"></span></p>
                         <p>Distance: <span id="nearest-pier-distance"></span></p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="times-section glass-morphism">
-                <div class="results" id="results">
-                    <div class="direction westbound">
-                        <h2><i class="fas fa-arrow-left"></i> Westbound</h2>
-                        <div id="westbound-times" class="times-list"></div>
-                    </div>
-                    <div class="direction eastbound">
-                        <h2><i class="fas fa-arrow-right"></i> Eastbound</h2>
-                        <div id="eastbound-times" class="times-list"></div>
                     </div>
                 </div>
             </section>
