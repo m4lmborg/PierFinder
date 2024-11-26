@@ -61,12 +61,10 @@ body {
 
 /* Hero Section */
 .hero {
-    background: var(--hero-gradient);
-    padding: 2rem 2rem 6rem;
-    color: white;
-    text-align: center;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    padding: 2rem 1.5rem;
     position: relative;
-    overflow: hidden;
+    z-index: 1;
 }
 
 .hero::before {
@@ -88,31 +86,19 @@ body {
 }
 
 .app-header h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    background: linear-gradient(to right, #ffffff, #e0e0e0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
 }
 
 .app-description {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.9);
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.6;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
 }
 
 .app-disclaimer {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.8);
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    background: rgba(0, 0, 0, 0.1);
-    display: inline-block;
+    font-size: 0.8rem;
+    padding: 0.5rem 0.75rem;
 }
 
 .container {
@@ -127,31 +113,23 @@ body {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-}
-
-/* Glass Morphism Effect */
-.glass-morphism {
-    background: var(--glass-background);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
-    border-radius: 24px;
-    box-shadow: 0 8px 32px 0 var(--glass-shadow);
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 /* Pier Selection Section */
 .pier-selection-section {
-    padding: 2rem;
+    padding: 1.25rem;
 }
 
 .pier-selector {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 label {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--primary-text);
     display: flex;
@@ -170,8 +148,8 @@ label i {
 
 select {
     width: 100%;
-    padding: 1rem;
-    font-size: 1.1rem;
+    padding: 0.75rem;
+    font-size: 1rem;
     border: 2px solid var(--border-color);
     border-radius: 12px;
     background-color: rgba(255, 255, 255, 0.9);
@@ -208,12 +186,12 @@ select:focus {
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-    padding: 1rem 1.5rem;
+    padding: 0.75rem 1rem;
     background: var(--accent-color);
     color: white;
     border: none;
     border-radius: 12px;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -234,21 +212,21 @@ select:focus {
     display: flex;
     align-items: flex-start;
     gap: 1rem;
-    padding: 1rem;
+    padding: 0.75rem;
     background: rgba(0,113,227,0.1);
     border-radius: 12px;
-    margin-top: 1rem;
+    margin-top: 0.75rem;
 }
 
 .location-disclaimer i {
     color: var(--accent-color);
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-top: 0.2rem;
 }
 
 .location-disclaimer p {
     color: var(--secondary-text);
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     margin: 0;
 }
 
@@ -256,20 +234,25 @@ select:focus {
     display: flex;
     align-items: flex-start;
     gap: 1rem;
-    padding: 1.5rem;
+    padding: 1rem;
     background: rgba(255,255,255,0.9);
     border-radius: 12px;
-    margin-top: 1rem;
+    margin-top: 0.75rem;
+}
+
+.nearest-pier-info.hidden {
+    display: none;
 }
 
 .nearest-pier-info i {
     color: var(--accent-color);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .nearest-pier-info p {
-    margin: 0.3rem 0;
+    margin: 0.2rem 0;
     color: var(--primary-text);
+    font-size: 0.9rem;
 }
 
 .nearest-pier-info span {
@@ -279,7 +262,8 @@ select:focus {
 
 /* Times Section */
 .times-section {
-    padding: 2rem;
+    padding: 1.25rem;
+    margin-top: 1rem;
 }
 
 .results {
@@ -289,10 +273,10 @@ select:focus {
 }
 
 .direction h2 {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: var(--primary-text);
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -310,13 +294,14 @@ select:focus {
 
 .time-entry {
     background: rgba(255,255,255,0.9);
-    padding: 1.25rem;
+    padding: 0.75rem;
     border-radius: 12px;
     display: grid;
     grid-template-columns: auto 1fr auto;
-    gap: 1.5rem;
+    gap: 0.75rem;
     align-items: center;
     transition: transform 0.2s ease;
+    margin-bottom: 0.5rem;
 }
 
 .time-entry:hover {
@@ -324,20 +309,20 @@ select:focus {
 }
 
 .time {
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--primary-text);
     font-family: -apple-system-monospace, monospace;
 }
 
 .countdown {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--success-color);
     font-weight: 600;
 }
 
 .destination {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--secondary-text);
 }
 
@@ -348,12 +333,12 @@ select:focus {
 }
 
 .time-display {
-    margin-top: 2rem;
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 12px;
-    padding: 1rem 2rem;
     display: inline-flex;
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -400,40 +385,84 @@ select:focus {
     display: none;
 }
 
+/* Glass Morphism Effect */
+.glass-morphism {
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 var(--glass-shadow);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero {
-        padding: 3rem 1.5rem;
+        padding: 1.5rem 1rem;
     }
 
     .app-header h1 {
-        font-size: 2.5rem;
+        font-size: 1.5rem;
+    }
+
+    .app-description {
+        font-size: 0.9rem;
+    }
+
+    .time-display {
+        margin-top: 0.75rem;
     }
 
     .container {
-        padding: 0 1rem;
-        margin-top: -2rem;
+        margin-top: -0.5rem;
     }
 
     .results {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .current-time {
-        font-size: 2.5rem;
+        gap: 1rem;
     }
 
     .time-entry {
+        padding: 0.6rem 0.75rem;
+    }
+
+    .time, .countdown, .destination {
+        font-size: 0.9rem;
+    }
+}
+
+/* Small phones */
+@media (max-width: 380px) {
+    .hero {
+        padding: 1.25rem 0.75rem;
+    }
+
+    .app-header h1 {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .time-display {
+        padding: 0.6rem 0.75rem;
+    }
+
+    .pier-selection-section,
+    .times-section {
         padding: 1rem;
-        gap: 1rem;
+    }
+
+    select {
+        padding: 0.6rem;
+    }
+
+    .nearest-pier-btn {
+        padding: 0.6rem 0.75rem;
     }
 }
 
 /* Safe Area Support */
 @supports(padding: max(0px)) {
     .container {
-        padding-left: max(2rem, env(safe-area-inset-left));
-        padding-right: max(2rem, env(safe-area-inset-right));
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
     }
 }
