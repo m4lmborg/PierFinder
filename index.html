@@ -4,28 +4,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Thames Clipper Times</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="hero">
-        <div class="hero-content">
-            <header class="app-header">
-                <h1>Thames Clipper Times</h1>
-                <p class="app-description">
-                    A streamlined interface for checking Thames Clipper river bus arrival times across London. 
-                    View real-time schedules, locate your nearest pier, and plan your journey efficiently.
-                </p>
-            </header>
-        </div>
+    <div class="dynamic-background">
+        <span class="orb orb-one"></span>
+        <span class="orb orb-two"></span>
+        <span class="orb orb-three"></span>
     </div>
 
-    <div class="container">
-        <main class="content">
-            <section class="pier-selection-section glass-morphism">
+    <header class="top-bar glass-panel">
+        <div class="brand">
+            <i class="fas fa-water"></i>
+            <span>Thames Clipper Times</span>
+        </div>
+        <div class="top-bar-actions">
+            <a href="#pier-select" class="pill-button ghost">Jump to Pier Select</a>
+            <button class="pill-button primary" id="refresh-btn" aria-label="Refresh boat times">
+                <i class="fas fa-rotate"></i>
+                Refresh
+            </button>
+        </div>
+    </header>
+
+    <main class="page-wrapper">
+        <section class="hero-section glass-panel">
+            <div class="hero-copy">
+                <p class="eyebrow">Your river commute, reimagined</p>
+                <h1>Flow through London with live Thames Clipper intel</h1>
+                <p class="lead">Pick a pier, tap for your nearest stop, and glide through real-time arrivals. Built for commuters, explorers, and anyone chasing the river breeze.</p>
+                <div class="hero-actions">
+                    <a href="#pier-select" class="pill-button primary">
+                        <i class="fas fa-anchor"></i>
+                        Select a pier
+                    </a>
+                    <button class="pill-button ghost" id="find-nearest-hero">
+                        <i class="fas fa-location-crosshairs"></i>
+                        Find my nearest pier
+                    </button>
+                </div>
+            </div>
+            <div class="hero-preview">
+                <div class="preview-card">
+                    <span class="preview-label">Live snapshot</span>
+                    <div class="preview-metric">
+                        <span class="metric-time" id="hero-time">--:--</span>
+                        <span class="metric-caption">Local time</span>
+                    </div>
+                    <div class="preview-metric">
+                        <span class="metric-status" id="hero-status">Choose a pier to begin</span>
+                        <span class="metric-caption">Service outlook</span>
+                    </div>
+                    <div class="preview-next">
+                        <span class="next-label">Next departure</span>
+                        <div class="next-meta">
+                            <div class="next-line-group">
+                                <span id="hero-next-line" class="next-line">--</span>
+                                <span id="hero-next-direction" class="next-direction hidden"></span>
+                            </div>
+                            <div class="next-details">
+                                <span id="hero-next-destination">Select a pier to see destinations.</span>
+                                <span id="hero-next-countdown" class="next-countdown">--</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="preview-summary" id="hero-service-count">
+                        Choose a pier to start tracking departures.
+                    </div>
+                    <div class="preview-routes" id="hero-routes" aria-live="polite">
+                        <span class="route-chip placeholder">RB routes will appear here</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="feature-grid">
+            <article class="feature-card glass-panel">
+                <i class="fas fa-compass"></i>
+                <h2>Smart discovery</h2>
+                <p>Grant access once and we’ll always highlight the pier that’s quickest to reach from where you’re standing.</p>
+            </article>
+            <article class="feature-card glass-panel">
+                <i class="fas fa-wave-square"></i>
+                <h2>Live movement</h2>
+                <p>Departures refresh automatically every 30 seconds so you can feel the river’s rhythm without hitting reload.</p>
+            </article>
+            <article class="feature-card glass-panel">
+                <i class="fas fa-heart"></i>
+                <h2>Optimised for you</h2>
+                <p>Crafted for commuters and explorers with a responsive layout, bold typography, and smooth accessibility.</p>
+            </article>
+        </section>
+
+        <section class="live-panel glass-panel" aria-live="polite">
+            <div class="live-time">
+                <span class="label">Local time</span>
+                <p id="current-time" class="time-display">--:--</p>
+                <p id="current-date" class="date-display">Checking the calendar…</p>
+            </div>
+            <div class="live-status">
+                <span class="label">Today</span>
+                <div class="status-group">
+                    <span id="service-status" class="status-badge status-idle">Select a pier to see departures</span>
+                    <span id="bank-holiday" class="status-badge status-warning hidden">
+                        <i class="fas fa-flag-usa"></i>
+                        Bank Holiday service in effect
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <section class="main-layout">
+            <section class="pier-selection-section glass-panel">
+                <div class="section-heading">
+                    <h2><i class="fas fa-anchor"></i> Pier selection</h2>
+                    <p>Choose from all active Thames Clippers piers or let us find the closest one instantly.</p>
+                </div>
                 <div class="pier-selector">
                     <label for="pier-select">
-                        <i class="fas fa-anchor"></i>
+                        <i class="fas fa-sailboat"></i>
                         Select your pier
                     </label>
                     <div class="select-wrapper">
@@ -62,9 +163,9 @@
                             <i class="fas fa-info-circle"></i>
                         </button>
                     </div>
-                    
+
                     <div id="location-info" class="location-info hidden">
-                        <p>Clicking "Find Nearest Pier" will request access to your device's location to find the closest Thames Clipper pier to you.</p>
+                        <p>Allow location access and we’ll calculate the closest pier in seconds. Your data never leaves this browser tab.</p>
                     </div>
 
                     <div id="nearest-pier-info" class="nearest-pier-info hidden" aria-live="polite">
@@ -77,30 +178,51 @@
                 </div>
             </section>
 
-            <section class="times-section glass-morphism">
-                <div class="results" id="results">
+            <section class="times-section glass-panel">
+                <div class="section-heading">
+                    <h2><i class="fas fa-clock"></i> Departures board</h2>
+                    <p>We split the river for you — westbound on the left, eastbound on the right. Each card updates automatically.</p>
+                </div>
+
+                <div id="loading-state" class="loading-state hidden" aria-live="polite">
+                    <div class="loading-pulse"></div>
+                    <p>Fetching live Thames Clipper data…</p>
+                </div>
+
+                <div id="results" class="results">
                     <div class="direction westbound">
-                        <h2><i class="fas fa-arrow-left"></i> Westbound</h2>
+                        <h3><i class="fas fa-arrow-left"></i> Westbound</h3>
                         <div id="westbound-times" class="times-list">
-                            <!-- Time items will be inserted here by JavaScript -->
+                            <p class="placeholder">Select a pier to see times</p>
                         </div>
                     </div>
                     <div class="direction eastbound">
-                        <h2><i class="fas fa-arrow-right"></i> Eastbound</h2>
+                        <h3><i class="fas fa-arrow-right"></i> Eastbound</h3>
                         <div id="eastbound-times" class="times-list">
-                            <!-- Time items will be inserted here by JavaScript -->
+                            <p class="placeholder">Select a pier to see times</p>
                         </div>
                     </div>
                 </div>
             </section>
-        </main>
-    </div>
+        </section>
+
+        <section class="service-highlights glass-panel">
+            <div class="section-heading">
+                <h2><i class="fas fa-lightbulb"></i> Quick takeaways</h2>
+                <p>Once you’ve picked a pier we’ll summarise the fastest options and let you know if anything looks delayed.</p>
+            </div>
+            <ul id="service-highlights" class="highlight-list">
+                <li class="placeholder">Pick a pier to see headline updates for your next sailing.</li>
+            </ul>
+        </section>
+    </main>
 
     <footer class="app-footer">
         <p class="app-disclaimer">
             This is an independent service and is not affiliated with Thames Clippers or Transport for London.
         </p>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
